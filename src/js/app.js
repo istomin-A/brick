@@ -17,6 +17,7 @@ if (burger) {
             const menuLinks = document.querySelectorAll('.menu__link');
 
             menuLinks.forEach(link => link.addEventListener('click', (e) => {
+                document.body.classList.remove('_lock');
                 burger.classList.remove('_active');
                 menuBody.classList.remove('_active');
             }));
