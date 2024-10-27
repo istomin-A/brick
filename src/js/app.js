@@ -12,6 +12,15 @@ if (burger) {
         document.body.classList.toggle('_lock');
         burger.classList.toggle('_active');
         menuBody.classList.toggle('_active');
+
+        if (burger.classList.contains('_active')) {
+            const menuLinks = document.querySelectorAll('.menu__link');
+
+            menuLinks.forEach(link => link.addEventListener('click', (e) => {
+                burger.classList.remove('_active');
+                menuBody.classList.remove('_active');
+            }));
+        }
     });
 }
 
