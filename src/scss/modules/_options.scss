@@ -1,0 +1,58 @@
+@use 'functions';
+// =======================================================================================================
+// * Import fonts
+// &display=swap - что бы шрифты грузились коректно
+// &subset=cyrillic-ext - для кирилических сайтов
+// example - @import url("https://fonts.googleapis.com/css?family=Montserrat:500,600,700&display=swap&subset=cyrillic-ext");
+@import url(https://fonts.googleapis.com/css?family=Montserrat:regular,500,600,700&display=swap&subset=cyrillic-ext);
+
+// =======================================================================================================
+body {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: functions.rem(16);
+    color: #000000;
+
+    &._lock {
+        overflow: hidden;
+    }
+}
+
+// =======================================================================================================
+// * Container
+._container {
+    max-width: functions.rem(1100);
+    margin: 0 auto;
+    padding: 0px 15px;
+}
+
+// =======================================================================================================
+// wrapper
+.wrapper {
+    overflow: hidden;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    // press footer
+    .main {
+        flex: 1 1 auto;
+        // fix slider
+        min-width: 0;
+    }
+}
+
+// =======================================================================================================
+// *_ibg
+._ibg {
+    position: relative;
+
+    img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+    }
+}

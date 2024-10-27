@@ -1,0 +1,36 @@
+// * import functions
+@use 'functions';
+// * import variables
+@use 'variables';
+
+// =======================================================================================================
+.footer {
+
+    &__container {}
+
+    &__inner {
+        padding: 0px 0px functions.rem(40) 0px;
+
+        @media (max-width: variables.$tablet) {
+            padding: 0px 0px functions.rem(20) 0px;
+        }
+
+        &::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: functions.rem(1);
+            background-color: #000;
+        }
+    }
+
+    &__text {
+        margin: functions.rem(40) functions.rem(0) functions.rem(0) functions.rem(0);
+        text-align: center;
+        line-height: functions.prc(17, 14);
+
+        @media (max-width: variables.$tablet) {
+            margin: functions.rem(20) functions.rem(0) functions.rem(0) functions.rem(0);
+        }
+    }
+}

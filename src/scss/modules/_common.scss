@@ -1,0 +1,402 @@
+// * import functions
+@use 'functions';
+// * import variables
+@use 'variables';
+
+// =======================================================================================================
+// * Для общих стилей
+.logo {
+    font-weight: 700;
+    font-size: functions.rem(30);
+    line-height: functions.prc(36, 30);
+    color: #fff;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 20;
+
+    @media (max-width: variables.$mobile) {
+        order: 1;
+    }
+}
+
+// =======================================================================================================
+.connection {
+    display: flex;
+    gap: functions.rem(12);
+    background-color: transparent;
+    font-weight: 600;
+    font-size: functions.rem(16);
+    line-height: functions.prc(20, 16);
+    color: #fff;
+    position: relative;
+
+    @media (any-hover: hover) {
+        &::before {
+            content: '';
+            display: block;
+            width: 0;
+            height: functions.rem(2);
+            background-color: #fff;
+            position: absolute;
+            bottom: functions.rem(-2);
+            left: functions.rem(30);
+            transition: width 0.5s ease 0s;
+        }
+
+        &:hover {
+            &::before {
+                width: 83%;
+            }
+        }
+
+    }
+
+    &__icon {
+        display: block;
+        fill: #fff;
+        width: functions.rem(16);
+        height: functions.rem(16);
+
+        @media (max-width: variables.$mobileSmall) {
+            display: none;
+        }
+    }
+
+    span {}
+
+    @media (max-width: variables.$mobile) {
+        order: 2;
+        position: relative;
+        z-index: 20;
+    }
+}
+
+// =======================================================================================================
+.section-title {
+    font-weight: 600;
+    font-size: functions.rem(16);
+    line-height: functions.prc(20, 16);
+    color: #FF9A23;
+    letter-spacing: functions.rem(2);
+    text-transform: uppercase;
+
+
+    &::after {
+        content: '';
+        display: block;
+        width: functions.rem(100);
+        height: functions.rem(1);
+        background-color: #FF9A23;
+        margin: functions.rem(20) functions.rem(0) functions.rem(0) functions.rem(0);
+
+        @media (max-width: variables.$tablet) {
+            margin: functions.rem(10) functions.rem(0) functions.rem(0) functions.rem(0);
+        }
+    }
+}
+
+// =======================================================================================================
+.button {
+    display: inline-block;
+    padding: functions.rem(15) functions.rem(40);
+    background-color: #FF9A23;
+    font-weight: 500;
+    font-size: functions.rem(16);
+    line-height: functions.prc(20, 16);
+    color: #000;
+    transition: box-shadow 0.5s ease 0s;
+
+    @media (any-hover: hover) {
+        &:hover {
+            box-shadow: 0px 0px functions.rem(8) functions.rem(8) rgba(255, 154, 35, .5);
+        }
+    }
+
+    @media (max-width: variables.$mobile) {
+        padding: functions.rem(15) functions.rem(20);
+    }
+}
+
+// =======================================================================================================
+.form {
+
+    &__title {
+        font-weight: 500;
+        font-size: functions.rem(25);
+        line-height: functions.prc(30, 25);
+        color: #fff;
+
+        &:not(:last-child) {
+            margin: functions.rem(0) functions.rem(0) functions.rem(20) functions.rem(0);
+        }
+
+        &_black {
+            color: #000;
+        }
+    }
+
+    &__text {
+        line-height: functions.prc(18, 16);
+        color: #fff;
+
+        &:not(:last-child) {
+            margin: functions.rem(0) functions.rem(0) functions.rem(20) functions.rem(0);
+        }
+
+        &_black {
+            color: #000;
+        }
+    }
+}
+
+.main-form {
+    display: flex;
+    flex-direction: column;
+
+    &__input {
+        padding: functions.rem(14) functions.rem(25);
+        background-color: transparent;
+        border: 1px solid rgba(255, 255, 255, .7);
+        border-radius: functions.rem(7);
+        color: rgba(255, 255, 255, .7);
+        font-size: functions.rem(16);
+        margin: functions.rem(0) functions.rem(0) functions.rem(15) functions.rem(0);
+
+        &::placeholder {
+            color: rgba(255, 255, 255, .7);
+        }
+
+        &_black {
+            color: rgba(0, 0, 0, .7);
+            border: 1px solid rgba(0, 0, 0, .7);
+
+            &::placeholder {
+                color: rgba(0, 0, 0, .7);
+            }
+        }
+    }
+
+    &__button-width {}
+
+    &__button {
+        display: flex;
+        align-items: center;
+        gap: functions.rem(10);
+        padding: functions.rem(12) functions.rem(5);
+        background-color: transparent;
+        font-weight: 500;
+        font-size: functions.rem(16);
+        line-height: functions.prc(20, 16);
+        color: #fff;
+
+        @media (any-hover: hover) {
+            &:hover {
+                span::before {
+                    width: 100%;
+                }
+            }
+        }
+
+        span {
+            position: relative;
+
+            @media (any-hover: hover) {
+                &::before {
+                    content: '';
+                    display: block;
+                    width: 0;
+                    height: functions.rem(2);
+                    background-color: #fff;
+                    position: absolute;
+                    bottom: functions.rem(-2);
+                    left: 0;
+                    transition: width 0.5s ease 0s;
+                }
+            }
+        }
+
+        &_black {
+            color: #000;
+
+            span {
+                @media (any-hover: hover) {
+                    &::before {
+                        background-color: #000;
+                    }
+                }
+            }
+        }
+    }
+
+    &__icon {
+        display: block;
+        width: functions.rem(21);
+        height: functions.rem(21);
+        fill: #fff;
+
+        &_black {
+            fill: #000;
+        }
+    }
+}
+
+// =======================================================================================================
+.swiper-pagination {
+    display: flex;
+    justify-content: center;
+    gap: functions.rem(7);
+
+    .swiper-pagination-bullet {
+        width: functions.rem(10);
+        height: functions.rem(10);
+        background: #FF9A23;
+    }
+}
+
+.swiper-arrow-prev {}
+
+.swiper-arrow-next {}
+
+.swiper-arrow-icon {
+    display: block;
+    width: functions.rem(50);
+    height: functions.rem(50);
+    cursor: pointer;
+    transform: rotate(39deg);
+    fill: #FF9A23;
+    position: absolute;
+    bottom: -2%;
+    left: 59%;
+    z-index: 10;
+
+    @media (max-width: variables.$tablet) {
+        left: 63%;
+    }
+
+    @media (max-width: variables.$mobile) {
+        left: 70%;
+    }
+
+    @media (max-width: variables.$mobileSmall) {
+        left: 73%;
+    }
+
+    &_prev {
+        transform: rotate(-141deg);
+        left: 38%;
+
+        @media (max-width: variables.$tablet) {
+            left: 34%;
+        }
+
+        @media (max-width: variables.$mobile) {
+            left: 27%;
+        }
+
+        @media (max-width: variables.$mobileSmall) {
+            left: 10%;
+        }
+    }
+}
+
+.swiper-button-disabled {
+    .swiper-arrow-icon {
+        fill: rgba(255, 154, 35, .5);
+        cursor: default;
+    }
+}
+
+// =======================================================================================================
+.product-card {
+    display: flex;
+    flex-direction: column;
+    gap: functions.rem(16);
+
+    &__image {
+        padding: functions.rem(94) functions.rem(18) functions.rem(63) functions.rem(18);
+        background-color: #F5F5F5;
+    }
+
+    &__image-item {
+        display: block;
+        padding: 0px 0px 68% 0px;
+
+        img {}
+    }
+
+    &__title {
+        flex: 1 1 auto;
+        font-weight: 600;
+        font-size: functions.rem(18);
+        line-height: functions.prc(22, 18);
+        color: #000;
+        position: relative;
+
+        @media (any-hover: hover) {
+            &::before {
+                content: '';
+                display: block;
+                width: 0;
+                height: functions.rem(2);
+                background-color: #000;
+                position: absolute;
+                bottom: functions.rem(-2);
+                left: 0;
+                transition: width 0.5s ease 0s;
+            }
+
+            &:hover {
+                &::before {
+                    width: 85%;
+                }
+            }
+        }
+    }
+
+    &__link-title {}
+
+    &__text {
+        font-weight: 500;
+        font-size: functions.rem(16);
+        line-height: functions.prc(20, 16);
+        color: rgba(0, 0, 0, .4);
+        margin: 0px 0px functions.rem(12) 0px;
+    }
+
+    &__link {
+        display: inline-flex;
+        align-items: center;
+        gap: functions.rem(18);
+        font-weight: 500;
+        line-height: functions.prc(20, 16);
+        color: #FF9A23;
+        position: relative;
+
+        @media (any-hover: hover) {
+            &::before {
+                content: '';
+                display: block;
+                width: 0;
+                height: functions.rem(2);
+                background-color: #FF9A23;
+                position: absolute;
+                bottom: functions.rem(2);
+                left: 0;
+                transition: width 0.5s ease 0s;
+            }
+
+            &:hover {
+                &::before {
+                    width: 50%;
+                }
+            }
+        }
+    }
+
+    &__icon {
+        display: block;
+        width: functions.rem(25);
+        height: functions.rem(25);
+        fill: #FF9A23;
+    }
+}

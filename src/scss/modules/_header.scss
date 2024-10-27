@@ -1,0 +1,169 @@
+// * import functions
+@use 'functions';
+// * import variables
+@use 'variables';
+
+// =======================================================================================================
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    width: 100%;
+    transition: background-color 0.5s ease 0s;
+
+    &._active {
+        background-color: rgba(133, 137, 146, .9);
+        box-shadow: 0 0 functions.rem(29) functions.rem(-8) rgba(0, 0, 0, .8);
+    }
+
+    &__container {}
+
+    &__body {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: functions.rem(20);
+        min-height: functions.rem(74);
+        transition: min-height 0.5s ease 0s;
+
+        &._active {
+            min-height: functions.rem(53);
+        }
+    }
+}
+
+.menu {
+    @media (max-width: variables.$mobile) {
+        order: 3;
+    }
+
+    &__body {
+        @media (max-width: variables.$mobile) {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(133, 137, 146, .9);
+            transition: left 0.3s ease 0s;
+
+            &._active {
+                left: 0;
+            }
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: functions.rem(65);
+        row-gap: functions.rem(10);
+
+        @media (max-width: variables.$tablet) {
+            column-gap: functions.rem(25);
+        }
+
+        @media (max-width: variables.$mobile) {
+            flex-direction: column;
+            padding: functions.rem(90) functions.rem(0) functions.rem(0) functions.rem(30);
+            row-gap: functions.rem(15);
+        }
+    }
+
+    &__item {}
+
+    &__link {
+        font-weight: 500;
+        font-size: functions.rem(16);
+        line-height: functions.prc(20, 16);
+        color: #fff;
+        position: relative;
+
+        @media (any-hover: hover) {
+            &::before {
+                content: '';
+                display: block;
+                width: 0;
+                height: functions.rem(2);
+                background-color: #fff;
+                position: absolute;
+                bottom: functions.rem(-2);
+                left: 0;
+                transition: width 0.5s ease 0s;
+            }
+
+            &:hover {
+                &::before {
+                    width: 100%;
+                }
+            }
+
+        }
+
+        @media (max-width: variables.$mobile) {
+            font-size: functions.rem(18);
+        }
+    }
+}
+
+.burger {
+    display: none;
+
+    @media (max-width: variables.$mobile) {
+        display: block;
+        position: relative;
+        height: functions.rem(18);
+        width: functions.rem(30);
+        z-index: 5;
+        background-color: transparent;
+
+        &::before,
+        &::after,
+        span {
+            position: absolute;
+            left: 0;
+            height: 10%;
+            width: 100%;
+            transition: left 0.3s ease 0s;
+            background-color: #fff;
+            transition: all 0.3s ease 0s;
+        }
+
+        &::before,
+        &::after {
+            content: "";
+        }
+
+        &::before {
+            top: 0;
+        }
+
+        &::after {
+            bottom: 0;
+        }
+
+        span {
+            top: 50%;
+            transform: scale(1) translate(0px, -50%);
+        }
+
+        &._active {
+
+            span {
+                transform: scale(0) translate(0px, -50%);
+            }
+
+            &::before {
+                top: 50%;
+                transform: rotate(-45deg) translate(0px, -50%);
+            }
+
+            &::after {
+                bottom: 50%;
+                transform: rotate(45deg) translate(0px, 50%);
+            }
+        }
+    }
+}
